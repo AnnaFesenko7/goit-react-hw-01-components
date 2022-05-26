@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import Transaction from './transaction';
 import s from './TransactionHistory.module.css';
+
 export default function TransactionHistory({ items }) {
   return (
     <table className={s.transactionHistory}>
@@ -15,6 +17,7 @@ export default function TransactionHistory({ items }) {
         {items.map(item => (
           <Transaction
             key={item.id}
+            id={item.id}
             type={item.type}
             amount={item.amount}
             currency={item.currency}
@@ -24,3 +27,6 @@ export default function TransactionHistory({ items }) {
     </table>
   );
 }
+TransactionHistory.protoType = {
+  items: PropTypes.array.isRequired,
+};
